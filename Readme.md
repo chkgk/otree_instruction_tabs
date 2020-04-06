@@ -1,4 +1,4 @@
-# Bayesian Truth Serum (Prelec, 2004)
+# Instruction Tabs for oTree
 
 ## Overview
 This app implements a [Tab Carousel](https://github.com/imrantushar/bs-tab-carousel) to display multiple screens worth of instructions on a single oTree page. It displays Previous/Next buttons to navigate between screens and allows for the inclusion of comprehension questions on the final page. 

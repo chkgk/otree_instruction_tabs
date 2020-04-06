@@ -1,0 +1,104 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    {# Instructions - best to leave empty #}
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'instruction_tabs/carousel.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <!-- Tabs on top of page -->
+    <ul class="nav nav-tabs fixed-top navbar-light bg-light justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item tab_header">
+            <a class="nav-link active tab_element" id="part1-tab" data-toggle="tab" href="#part1" role="tab"
+               aria-controls="part1"
+               onclick="topFunction()">Welcome</a>
+        </li>
+
+        <li class="nav-item tab_header">
+            <a class="nav-link tab_element" id="part2-tab" data-toggle="tab" href="#part2" role="tab"
+               aria-controls="part2"
+               onclick="topFunction()">The Game</a>
+        </li>
+
+        <li class="nav-item tab_header">
+            <a class="nav-link tab_element" id="part3-tab" data-toggle="tab" href="#part3" role="tab"
+               aria-controls="part3"
+               onclick="topFunction()">Comprehension questions</a>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+
+        <!-- Tab 1 content -->
+        <div class="customInstructions tab-pane show active" id="part1" role="tabpanel" aria-labelledby="part1-tab">
+            <div class="card-header bg-transparent mainheader">
+                <h3>Welcome</h3>
+            </div>
+
+            <p>
+                Instructions page 1
+            </p>
+
+
+            <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">Next</button>
+        </div>
+
+
+        <!-- Tab 2 content -->
+        <div class="tab-pane" id="part2" role="tabpane2" aria-labelledby="part2-tab">
+            <div class="card-header bg-transparent mainheader">
+                <h3>The Game</h3>
+            </div>
+
+            <p>
+                Instructions page 2
+            </p>
+
+            <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back">Previous</button>
+            <button type="button" class="nexttab btn-primary btn next">Next</button>
+        </div>
+
+
+        <!-- Tab content 3 -->
+        <div class="tab-pane" id="part3" role="tabpane3" aria-labelledby="part3-tab">
+            <div class="card-header bg-transparent mainheader">
+                <h3>Comprehension Questions</h3>
+            </div>
+
+            <p>
+                Instructions page 3 or comprehension questions
+            </p>
+
+            {% formfields %}
+
+            <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back">Back</button>
+            <button onclick="submit()" class="nexttab btn-primary btn next">Next</button>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static 'instruction_tabs/carousel.js' %}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            if (location.hash) {
+                $("a[href='" + location.hash + "']").tab("show");
+            }
+            $(document.body).on("click", "a[data-toggle='tab']", function(event) {
+                location.hash = this.getAttribute("href");
+            });
+        });
+        $(window).on("popstate", function() {
+            var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
+            $("a[href='" + anchor + "']").tab("show");
+        });
+    </script>
+{% endblock %}

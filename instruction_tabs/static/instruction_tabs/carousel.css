@@ -1,0 +1,25 @@
+.tab_header {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    text-align: center;
+}
+
+.tab_element {
+    display: block;
+    /* width: 300px; */
+}
+
+.next {
+    float: right;
+    margin: 40px auto;
+}
+
+.back {
+    float: left;
+    margin: 40px auto;
+}
+
+.card-header {
+    padding: 0;
+}
